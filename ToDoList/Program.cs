@@ -10,17 +10,17 @@ namespace ToDoList.Models
     {
       Console.WriteLine("Welcome to the To Do list!");
       string Response1 = "";
-       while(Response1 != "end")
+       while(Response1.ToLower() != "end")
         {
           Console.WriteLine("Would you like to add an item or view your list?");
           Console.WriteLine("Answer with add, view, or end");
           Response1 = Console.ReadLine();
 
-          if (Response1 == "add")
+          if (Response1.ToLower() == "add")
           {
             Add();
           }
-          else if (Response1 == "view")
+          else if (Response1.ToLower() == "view")
           {
             View();
           }
@@ -35,10 +35,17 @@ namespace ToDoList.Models
     public static void View()
     {
       List<Item> ItemList = Item.GetAll();
-        for(int i = 0; i <= ItemList.Count - 1; i++)
+      if (ItemList.Count <= 0 )
+      {
+        Console.WriteLine("Oh No! You haven't added anything to your to do list yet!");
+      }
+      else if (ItemList.Count >= 1)
+      {
+       for(int i = 0; i <= ItemList.Count - 1; i++)
           {
             Console.WriteLine((i + 1) + ". " + ItemList[i].Description);
-          } 
+          }  
+      }
     } 
   }
 }
