@@ -50,7 +50,6 @@ namespace ToDoList.Models
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
 
             // Begin new code
-
             cmd.CommandText = "INSERT INTO items (description) VALUES (@ItemDescription);";
             MySqlParameter param = new MySqlParameter();
             //cmd.Parameters.AddWithValue("@ItemDescription", this.Description); is the same as the four lines below
